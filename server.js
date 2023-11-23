@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose')
 const app = express();
 const { MongoClient } = require("mongodb");
 
@@ -22,8 +21,6 @@ async function getFirstReview() {
 
     const database = client.db('sample_airbnb');
     const reviews = database.collection('listingsAndReviews');
-    // Query for a movie that has the title 'Back to the Future'
-    // const query = { title: 'Back to the Future' };
     const first = await reviews.findOne({})
 
     return first
@@ -31,8 +28,6 @@ async function getFirstReview() {
     console.error(error)
   }
 }
-
-
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
